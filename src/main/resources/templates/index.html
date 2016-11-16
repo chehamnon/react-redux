@@ -11,6 +11,23 @@
 <body>
     <div id="react"></div>
     <script src="built/bundle.js"></script>
-
+	<script>
+	  // TODO add service worker code here
+	    if ('serviceWorker' in navigator) {
+	        navigator.serviceWorker.register('/service-worker.js', {
+	            scope: '/'
+	        }).then(function (reg) {
+	            if (reg.installing) {
+	                console.log('installing');
+	            } else if (reg.waiting) {
+	                console.log('installed');
+	            } else if (reg.active) {
+	                console.log('active');
+	            }
+	        }).catch(function (error) {
+	            console.log(error);
+	        });
+	    }
+	</script>
 </body>
 </html>
